@@ -6,41 +6,35 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
+ 
     <div id="elzero-app">
-        <div>Welcome to Vue Js</div>
-        <p>Welcome {{ name.length > 4 ? name : 'NOOOOOO' }} We are Happy To see You </p>
-         <p>{{ age + ' Years' }}</p>
-        <p>Your First Skills Is:  {{ skills[0] }} </p>
-        <p>{{ isSubscribed ? 'Vous êtes inscrit' : "Vous n'êtes pas inscrit" }}</p> 
+        <AppData></AppData>
     </div>
 
     <script src="js/vue.js"></script>
 
     <script>
+        Vue.component('AppData', {
+            data: function () {
+                return {
+                    count: 0
+                }
+            },
+            template: '<p>item {{ coun }}</p>'
+        })
         var vm = new Vue({
             el: '#elzero-app',
             data : {
                 name: 'Mohamed',
-                age: 22,
-                skills: ['PHP','Symfony','React','VueJs'],
-                isSubscribed: false,
-                completedTests: [
-                    {
-                        testName: 'First Test',
-                        testResult: '80%'
-                    },
-                    {
-                        testName: 'First Test',
-                        testResult: '80%'
-                    },
-                    {
-                        testName: 'First Test',
-                        testResult: '80%'
-                    }
-                ]
+                age:22
+            },
+            methods: {
+                yourAgeInDays: function () {
+                    return 'Your age is' + this.age * 365;
+                }
             }
         })
+
 
     </script>
 </body>
